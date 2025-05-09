@@ -36,6 +36,36 @@ public class Pocitac {
         this.pevnyDisk = pevnyDisk;
     }
 
+    public void vytvorSouborOVelikosti(long velikost) {
+        if (!jeZapnuty) {
+            throw new IllegalStateException("Počítač není zapnutý.");
+        }
+
+        long noveVyuziti = pevnyDisk.getVyuziteMisto() + velikost;
+        if (noveVyuziti > pevnyDisk.getKapacita()) {
+            System.err.println("Chyba: Soubor se nevejde na disk.");
+            return;
+        }
+
+        pevnyDisk.setVyuziteMisto(noveVyuziti);
+        System.out.println("Soubor o velikosti " + velikost + " bajtů byl vytvořen.");
+    }
+
+    public void vymazSouboryOVelikosti(long velikost) {
+        if (!jeZapnuty) {
+            throw new IllegalStateException("Počítač není zapnutý.");
+        }
+
+        long aktualniVyuziti = pevnyDisk.getVyuziteMisto();
+        if (velikost > aktualniVyuziti) {
+            System.err.println("Chyba: Nelze smazat soubory – zadaná velikost je větší než aktuálně využité místo.");
+            return;
+        }
+
+        pevnyDisk.setVyuziteMisto(aktualniVyuziti - velikost);
+        System.out.println("Soubory o velikosti " + velikost + " bajtů byly smazány.");
+    }
+
 
     public String toString() {
         return "Pocitac{" + "jeZapnuty=" + jeZapnuty + ", cpu=" + cpu + ", ram=" + ram + ", pevnyDisk=" + pevnyDisk + '}';

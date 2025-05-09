@@ -32,11 +32,16 @@ public class HlavniProgram {
         System.out.println(procesor);
         System.out.println(pocitac);
 
-
         pocitac.zapniSe();
+
         System.out.println("Počítač byl úspěšně zapnut.");
         System.err.println("Chyba při zapínání počítače:");
 
+        pocitac.vytvorSouborOVelikosti(100_000_000L);
+        pocitac.vytvorSouborOVelikosti(900_000_000_000L); // Should fail
+
+        pocitac.vymazSouboryOVelikosti(50_000_000L);
+        pocitac.vymazSouboryOVelikosti(200_000_000L); // Should not go below 0
 
         pocitac.vypniSe();
         System.out.println("Počítač byl vypnut.");
