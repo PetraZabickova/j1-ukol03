@@ -29,6 +29,6 @@ public class Disk {
 
 
     public String toString() {
-        return "Disk{" + "kapacita=" + kapacita + ", vyuziteMisto=" + vyuziteMisto + ", plnyDisk=" + plnyDisk() + '}';
+        return "Disk{" + "kapacita=" + kapacita + " B, " + "vyuziteMisto=" + vyuziteMisto + "B, " + "plnyDisk=" + plnyDisk() + '}';
     }
 }
