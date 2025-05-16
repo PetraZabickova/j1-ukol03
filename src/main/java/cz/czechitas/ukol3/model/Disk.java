@@ -17,6 +17,9 @@ public class Disk {
     }
 
     public void setVyuziteMisto(long vyuziteMisto) {
+        if (vyuziteMisto < 0) {
+            throw new IllegalArgumentException("Využité místo nemůže být záporné.");
+        }
         if (vyuziteMisto > kapacita) {
             throw new IllegalArgumentException("Využité místo nemůže být větší než kapacita disku.");
         }
